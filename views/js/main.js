@@ -398,11 +398,6 @@ var pizzaElementGenerator = function(i) {
   return pizzaContainer;
 }
 
-
-
-
-
-
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
 var resizePizzas = function(size) {
   window.performance.mark("mark_start_resize");   // User Timing API function
@@ -426,7 +421,7 @@ var resizePizzas = function(size) {
   changeSliderLabel(size);
 
   // The determineDx function is a complicated way of assigning percentage size.
-  // We only need to retrun a string in the form "xx%" and use it as the new width.
+  // We only need to return a string in the form "xx%" and use it as the new width.
   function determineWidth(size) {
     switch(size) {
       case "1":
