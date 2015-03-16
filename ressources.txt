@@ -1,0 +1,4 @@
+* Online image compression tool: http://compressnow.com/
+* Online CSS and JS minification tool: http://refresh-sf.com/
+* Documentation on how to eliminate render-blocking JavaScript: https://developers.google.com/speed/docs/insights/BlockingJS
+* Documentation on how to optimize CSS delivery: https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery
