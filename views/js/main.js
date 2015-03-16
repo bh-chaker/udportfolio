@@ -442,12 +442,14 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
+    // Compute newwidth only once
     var newwidth = determineWidth(size);
-    // Used this hack to be able to call forEach: http://toddmotto.com/ditch-the-array-foreach-call-nodelist-hack/
-    // This is faster than normal for loop.
-    [].forEach.call(document.querySelectorAll(".randomPizzaContainer"), function (elem) {
-      elem.style.width = newwidth
-    });
+
+    // run the 'document.querySelectorAll' only once
+    var items = document.querySelectorAll(".randomPizzaContainer");
+    for (var i=0; i<items.length; i++){
+      items[i].style.width = newwidth;
+    }
   }
   changePizzaSizes(size);
 
@@ -495,15 +497,13 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
-  /*
-    Optimization: 60fps when scrolling in pizza.html
-    Solution:
-    The value of 'document.body.scrollTop' is the same for all iterations,
-    so we can move it outside of the for loop to get the framerate around 60 fps.
-  */
+
+  // The value of 'document.body.scrollTop' is the same for all iterations,
+  // so we can move it outside of the for loop to get the framerate around 60 fps.
   var x = document.body.scrollTop / 1250;
+
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin(x + (i % 5));
+    var phase = Math.sin(x + (i%5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
